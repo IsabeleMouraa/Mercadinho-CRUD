@@ -15,8 +15,8 @@ Um sistema web simples e estiloso para gerenciamento de **produtos** e **categor
 
 ### Clone o repositório
 ```bash
-git clone https://github.com/seu-usuario/mercadinho-CRUD.git
-cd mercadinho-CRUD
+git clone https://github.com/IsabeleMouraa/Mercadinho-CRUD.git
+cd Mercadinho-CRUD
 ```
 
 ### Criar e ativar um ambiente virtual (opcional, mas recomendado)
