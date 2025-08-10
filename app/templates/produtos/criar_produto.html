@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>{% if produto %}Editar Produto{% else %}Criar Produto{% endif %}</h2>
+
+<form method="post">
+    Nome: <input type="text" name="nome" value="{{ produto.get_nome() if produto else '' }}" required><br>
+    Preço: <input type="number" step="0.01" name="preco" value="{{ produto.get_preco() if produto else '' }}" required><br>
+    Quantidade: <input type="number" name="quantidade" value="{{ produto.get_quantidade() if produto else '' }}" required><br>
+    <label for="categoria">Categoria:</label>
+    <select name="categoria_id" required>
+        <option value="" disabled selected hidden>Selecione uma categoria</option>
+        {% for categoria in categorias %}
+            <option value="{{ categoria.get_id() }}" {% if produto and categoria.get_id() == produto.get_categoria_id %}selected{% endif %}>
+                {{ categoria.get_nome() }}
+            </option>
+        {% endfor %}
+    </select><br>
+    <button type="submit">Salvar</button>
+</form>
+<a href="/produtos">Voltar para Produtos</a>
+
+{% endblock %}

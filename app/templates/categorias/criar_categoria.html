@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+{% if categoria %}Editar Categoria{% else %}Criar Categoria{% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<h2>{% if categoria %}Editar Categoria{% else %}Criar Categoria{% endif %}</h2>
+<form method="post">
+    Nome: <input type="text" name="nome" value="{{ categoria.get_nome() if categoria else '' }}" required><br>
+    Descrição: <textarea name="descricao" required>{{ categoria.get_descricao() if categoria else '' }}</textarea><br>
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="/categorias">Voltar para as Categorias</a>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+{% if produto %}Editar Produto{% else %}Criar Produto{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h2>Produtos</h2>
+<a href="{{ url_for('criar_produto') }}">Criar Novo Produto</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{ produto.get_nome() }}</td>
+            <td>R$ {{ "%.2f"|format(produto.get_preco()) }}</td>
+            <td>{{ produto.get_quantidade() }}</td>
+            <td title="{{ produto.categoria_descricao}}">{{ produto.categoria_nome }}</td>
+            <td>
+                <a href="{{ url_for('editar_produto', id=produto.get_id()) }}">Editar</a> |
+                <a href="{{ url_for('excluir_produto', id=produto.get_id()) }}">Deletar</a> 
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
